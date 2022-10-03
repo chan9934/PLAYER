@@ -19,6 +19,7 @@ public:
 	int Xplayer();
 	int Yplayer();
 	bool IsDead(Player A, Monster B);
+	bool Clear(Player A);
 
 	
 

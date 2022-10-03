@@ -14,8 +14,9 @@ Monster::Monster()
 
 void Monster::RandomMove()
 {
-	srand(time(nullptr));
-	int Randome = rand() % 4 + 1;
+	srand((time(nullptr))* 123213);
+	int Randome = (rand() ) % 4 + 1;
+	cout << Randome << endl;
 	if (Randome == 1)
 	{
 		--Y;

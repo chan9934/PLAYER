@@ -1,70 +1,40 @@
+#include"Character.h"
+#include "Player.h"
+#include "Monster.h"
+#include "Render.h"
+#include "Map.h"
 #include <iostream>
-#include <vector>
 
 using namespace std;
-class Parent
-{
-public:
-	Parent()
-	{
-		cout << "Parent Construct" << endl;
-	}
-	virtual ~Parent()
-	{
-		cout << "Parent Destruct" << endl;
-	}
-
-private:
-	int a;
-};
-
-class Child : public Parent
-{
-public:
-	Child()
-	{
-		cout << "Child Construct" << endl;
-	}
-	virtual ~Child()
-	{
-		cout << "Child Destruct" << endl;
-	}
-public:
-	void ChildDo()
-	{
-		cout << "a" << endl;
-	}
-};
 
 int main()
 {
-	vector<Parent*> Data;
-	Data.push_back(new Child());
-	Data.push_back(new Parent());
-	Data.push_back(new Child());
-	Data.push_back(new Child());
-	for (int i = 0; i < Data.size(); ++i)
+	Player* A = new Player;
+	Monster* B = new Monster;
+	while (true)
 	{
-		Child* CastC = dynamic_cast<Child*>(Data[i]);
-		if (CastC)
+		int Key = A->Input();
+		A->Move(Key);
+		B->RandomMove();
+		Render(*A, *B);
+		if (A->IsDead(*A, *B))
 		{
-			CastC->ChildDo();
+			delete A;
+			A = nullptr;
+			break;
 		}
+
+		else if (A->Clear(*A))
+		{
+			delete A;
+			A = nullptr;
+			break;
+		}
+		
+		
 	}
-	Parent* P1 = new Child();
-
-
-
-
-	Child* CastC = dynamic_cast<Child*>(P1);
-	if (CastC != nullptr)
-	{
-		CastC->~Child();
-	}
-
-	Parent* pParent = new Child();
-	delete pParent;
-
+	delete B;
+	B = nullptr;
 
 	return 0;
 }

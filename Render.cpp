@@ -17,7 +17,7 @@ void Render(Player A, Monster B)
 				cout << 'P' << ' ';
 			}
 
-			else if (j ==B.YMonster()&& i == B.XMonster())
+			else if (j ==B.XMonster()&& i == B.YMonster())
 			{
 				cout << 'M' << ' ';
 			}

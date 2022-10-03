@@ -15,7 +15,7 @@ int Character::Input()
 }
 void Character::Move(int A)
 {
-	if (A == 'W')
+	if (A == 'W'|| A == 'w')
 	{
 		--Y;
 		if (Wall(X, Y))
@@ -23,7 +23,7 @@ void Character::Move(int A)
 			++Y;
 		}
 	}
-	else if (A == 'S')
+	else if (A == 'S' || A == 's')
 	{
 		++Y;
 		if (Wall(X, Y))
@@ -31,7 +31,7 @@ void Character::Move(int A)
 			--Y;
 		}
 	}
-	else if (A == 'A')
+	else if (A == 'A' || A == 'a')
 	{
 		--X;
 		if (Wall(X, Y))
@@ -39,7 +39,7 @@ void Character::Move(int A)
 			++X;
 		}
 	}
-	else if (A == 'D')
+	else if (A == 'D' || A == 'd')
 	{
 		++X;
 		if (Wall(X, Y))
